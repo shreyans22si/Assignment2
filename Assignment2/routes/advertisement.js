@@ -22,6 +22,7 @@ router.get('/advertisement/add', function (req, res) {
     res.render('add');
 });
 
+// Add Advertisement and Save to DB
 router.post('/advertisement/add', function (req, res) {
     advertisements.create({
         title: req.body.title,
@@ -54,11 +55,11 @@ router.get('/advertisement/delete/:id', function (req, res) {
 router.get('/advertisement/edit/:id', function (req, res) {
     var id = req.params.id;
 
-    advertisements.findById(id, function (err, product) {
+    advertisements.findById(id, function (err, advertisement) {
         if (err)
             res.send('Advertisement : ' + id + 'not found!');
         else
-            res.render('edit', { advertisement: product });
+            res.render('edit', { advertisement: advertisement });
     });
 });
 

@@ -1,0 +1,58 @@
+﻿doctype html
+head
+  title Table V05
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='../vendor/bootstrap/css/bootstrap.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='../vendor/animate/animate.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='../vendor/select2/select2.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='../vendor/perfect-scrollbar/perfect-scrollbar.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='../stylesheets/util.css')
+  link(rel='stylesheet', type='text/css', href='../stylesheets/main.css')
+  // ===============================================================================================
+.limiter
+  .container-table100
+    .wrap-table100
+      .table100.ver1
+        .wrap-table100
+           table
+             thead
+               tr.row100.head
+                 th(colspan=7 style="text-align:right")
+                   a(href="/advertisement/add") Add Advertisement
+               tr.row100.head
+                 th.cell100.column2 Title
+                 th.cell100.column3 Description
+                 th.cell100.column4 Price
+                 th.cell100.column5 Location
+                 th.cell100.column6 Edit
+                 th.cell100.column7 Delete
+             tbody
+               each advertisement in AllAdvertisement
+                 tr.row100.body
+                   td.cell100.column2 #{advertisement.title}
+                   td.cell100.column3 #{advertisement.description}
+                   td.cell100.column4 #{advertisement.price}
+                   td.cell100.column5 #{advertisement.location}
+                   td.cell100.column6 
+                     a(href="/advertisement/edit/"+advertisement._id ) Edit
+                   td.cell100.column7 
+                     a(href="/advertisement/delete/"+advertisement._id title="Delete" onclick="return confirm(\'Are you sure you want to delete this Advertisement ?\');") Delete
+                 
+// ===============================================================================================
+script(src='../vendor/jquery/jquery-3.2.1.min.js')
+// ===============================================================================================
+script(src='../vendor/bootstrap/js/popper.js')
+script(src='../vendor/bootstrap/js/bootstrap.min.js')
+// ===============================================================================================
+script(src='../vendor/select2/select2.min.js')
+// ===============================================================================================
+script(src='../vendor/perfect-scrollbar/perfect-scrollbar.min.js')
+
+// ===============================================================================================
+script(src='../javascripts/main.js')
