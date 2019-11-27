@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="Model\authUser.js" />
     <Compile Include="Model\Advertisement.js">
       <SubType>Code</SubType>
     </Compile>
@@ -51,6 +52,9 @@
     <Compile Include="public\vendor\select2\select2.js" />
     <Compile Include="public\vendor\select2\select2.min.js" />
     <Compile Include="routes\advertisement.js" />
+    <Compile Include="routes\logout.js" />
+    <Compile Include="routes\register.js" />
+    <Compile Include="routes\login.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Content Include="package.json" />
@@ -94,6 +98,8 @@
     <Content Include="public\stylesheets\main.css" />
     <Content Include="public\stylesheets\util.css" />
     <Content Include="README.md" />
+    <Content Include="views\register.pug" />
+    <Content Include="views\login.pug" />
     <Content Include="views\edit.pug" />
     <Content Include="views\add.pug" />
     <Content Include="views\list.pug" />

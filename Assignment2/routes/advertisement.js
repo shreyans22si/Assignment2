@@ -5,10 +5,10 @@ var advertisements = require('../Model/Advertisement');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    res.redirect('advertisement');
+    res.redirect('/advertisement');
 });
 // List Advertisement Page
-router.get('/advertisement', function (req, res) {
+router.get('/advertisement', isUSerAuth, function (req, res) {
 
     advertisements.find(function (err, advertisements) {
         if (err) console.log(err);
@@ -18,12 +18,12 @@ router.get('/advertisement', function (req, res) {
 });
 
 //Add Advertisement Page
-router.get('/advertisement/add', function (req, res) {
+router.get('/advertisement/add', isUSerAuth, function (req, res) {
     res.render('add');
 });
 
 // Add Advertisement and Save to DB
-router.post('/advertisement/add', function (req, res) {
+router.post('/advertisement/add', isUSerAuth, function (req, res) {
     advertisements.create({
         title: req.body.title,
         description: req.body.description,
@@ -39,7 +39,7 @@ router.post('/advertisement/add', function (req, res) {
 });
 
 //Delete A Advertisement
-router.get('/advertisement/delete/:id', function (req, res) {
+router.get('/advertisement/delete/:id', isUSerAuth , function (req, res) {
     var id = req.params.id;
     advertisements.deleteOne({ _id: id }, function (err) {
         console.log(id);
@@ -52,7 +52,7 @@ router.get('/advertisement/delete/:id', function (req, res) {
 
 
 //Edit A Product Page
-router.get('/advertisement/edit/:id', function (req, res) {
+router.get('/advertisement/edit/:id', isUSerAuth , function (req, res) {
     var id = req.params.id;
 
     advertisements.findById(id, function (err, advertisement) {
@@ -64,7 +64,7 @@ router.get('/advertisement/edit/:id', function (req, res) {
 });
 
 //Edit a Advertisement and save to DB
-router.post('/advertisement/edit', function (req, res) {
+router.post('/advertisement/edit', isUSerAuth ,function (req, res) {
     var id = req.body.id;
     var editedAdvertisment = {
         _id: id,
@@ -82,5 +82,13 @@ router.post('/advertisement/edit', function (req, res) {
     });
 
 });
+
+function isUSerAuth(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    console.log('Not authenticated!');
+    res.redirect('/login');
+}
 
 module.exports = router;

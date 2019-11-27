@@ -15,33 +15,22 @@ head
   link(href='../stylesheets/main1.css', rel='stylesheet', media='all')
 .page-wrapper.bg-blue.p-t-100.p-b-100.font-robo
   .wrapper.wrapper--w680
-    h2
-      a(href='/logout' style="color:red; float:right") LogOut
     .card.card-1
       .card-heading
       .card-body
-        h2.title Add Advertisement
-        form(method='POST' action='/advertisement/add')
+        h2.title Login
+        form(method='POST' action='/login')
           .input-group
-            input.input--style-1(type='text', placeholder='Title', name='title' required)
-          .row.row-space
-            .col-2
-              .input-group
-                input.input--style-1(type='text', placeholder='Description', name='description' required)
-            .col-2
-              .input-group
-                input.input--style-1(type='number', placeholder='Price', name='price' required)
+            input.input--style-1(type='text', placeholder='Username', name='username' required)
           .input-group
-            .rs-select2.js-select-simple.select--no-search
-              select(name='location' required)
-                option(disabled='disabled', selected='selected') Location
-                option Toronto
-                option Orillia
-                option Markham
-                option Vaughan
-              .select-dropdown
-          .p-t-20
+            input.input--style-1(type='password', placeholder='Password', name='password' required)
+          .p-t-10
             button.btn.btn--radius.btn--green(type='submit') Submit
+          .p-t-10
+            p
+              | haven&apos;t you register yet please 
+              a(href='/register') click here. 
+          
 // Jquery JS
 script(src='../vendor1/jquery/jquery.min.js')
 // ../vendor1 JS
